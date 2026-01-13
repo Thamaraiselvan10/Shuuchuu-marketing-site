@@ -1,0 +1,250 @@
+---
+const wellnessFeatures = [
+  {
+    icon: '📔',
+    title: 'Personal Diary',
+    description: 'Reflect on your day with integrated journaling.',
+  },
+  {
+    icon: '💭',
+    title: 'Daily Quotes',
+    description: 'Start each day with inspiring wisdom.',
+  },
+  {
+    icon: '📖',
+    title: 'Wellness Articles',
+    description: 'Curated content to keep you balanced.',
+  },
+];
+---
+
+<section class="wellness-section section" id="wellness">
+  <!-- Background Elements -->
+  <div class="wellness-bg">
+    <div class="wellness-orb wellness-orb-1"></div>
+    <div class="wellness-orb wellness-orb-2"></div>
+    <div class="breathing-circle"></div>
+  </div>
+
+  <div class="container">
+    <div class="wellness-content reveal">
+      <span class="wellness-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        Wellness Integration
+      </span>
+
+      <h2 class="wellness-title">
+        Productivity with <span class="text-gradient">Peace of Mind</span>
+      </h2>
+
+      <p class="wellness-description">
+        True productivity isn't just about output—it's about sustainability. 
+        Shuuchuu integrates journaling and daily wellness content to ensure 
+        you don't burn out while you build up.
+      </p>
+
+      <div class="wellness-features">
+        {wellnessFeatures.map((feature) => (
+          <div class="wellness-feature">
+            <span class="wellness-feature-icon">{feature.icon}</span>
+            <div class="wellness-feature-content">
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .wellness-section {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    overflow: hidden;
+  }
+
+  [data-theme="light"] .wellness-section {
+    background: linear-gradient(135deg, #e8e3ff, #d4e5ff, #eef5ff);
+  }
+
+  /* Background Elements */
+  .wellness-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .wellness-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+  }
+
+  .wellness-orb-1 {
+    width: 500px;
+    height: 500px;
+    background: rgba(139, 92, 246, 0.3);
+    top: -200px;
+    left: -100px;
+  }
+
+  .wellness-orb-2 {
+    width: 400px;
+    height: 400px;
+    background: rgba(73, 136, 196, 0.3);
+    bottom: -150px;
+    right: -100px;
+  }
+
+  .breathing-circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    top: 50%;
+    right: 15%;
+    transform: translateY(-50%);
+    animation: breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: translateY(-50%) scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-50%) scale(1.2);
+      opacity: 0.6;
+    }
+  }
+
+  /* Content */
+  .wellness-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .wellness-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: var(--radius-full);
+    color: #c4b5fd;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xl);
+  }
+
+  [data-theme="light"] .wellness-badge {
+    color: #6d28d9;
+    background: rgba(139, 92, 246, 0.15);
+  }
+
+  .wellness-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-lg);
+    color: white;
+  }
+
+  [data-theme="light"] .wellness-title {
+    color: var(--text-color);
+  }
+
+  .wellness-description {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    margin-bottom: var(--space-2xl);
+  }
+
+  [data-theme="light"] .wellness-description {
+    color: var(--text-muted);
+  }
+
+  /* Features */
+  .wellness-features {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .wellness-feature {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-smooth);
+    text-align: left;
+  }
+
+  [data-theme="light"] .wellness-feature {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .wellness-feature:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  [data-theme="light"] .wellness-feature:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .wellness-feature-icon {
+    font-size: 2rem;
+  }
+
+  .wellness-feature h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: var(--space-xs);
+  }
+
+  [data-theme="light"] .wellness-feature h3 {
+    color: var(--text-color);
+  }
+
+  .wellness-feature p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  [data-theme="light"] .wellness-feature p {
+    color: var(--text-muted);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .wellness-features {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .wellness-feature {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .breathing-circle {
+      display: none;
+    }
+  }
+</style>

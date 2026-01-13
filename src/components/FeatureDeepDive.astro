@@ -1,0 +1,304 @@
+---
+const features = [
+  {
+    title: 'The Command Center',
+    subtitle: 'Your Day at a Glance',
+    description: 'Customize your dashboard with the widgets that matter to you—Tasks, Habits, Calendar, or your Daily Focus Stats. Everything you need, exactly where you need it.',
+    placeholder: '🎛️',
+    placeholderText: 'Dashboard Screenshot',
+    reverse: false,
+  },
+  {
+    title: 'Goal Mapping',
+    subtitle: 'Dream Big, Plan Small',
+    description: 'Break down massive ambitions into manageable phases. Watch your progress bar fill up as you conquer milestones on your journey to success.',
+    placeholder: '🗺️',
+    placeholderText: 'Goals Map View',
+    reverse: true,
+  },
+  {
+    title: 'Unbreakable Habits',
+    subtitle: 'Build Routines That Stick',
+    description: 'Track daily habits with satisfying check-ins and streak counters. Consistency is key—and Shuuchuu makes it feel rewarding every single day.',
+    placeholder: '🔥',
+    placeholderText: 'Habits Page Screenshot',
+    reverse: false,
+  },
+  {
+    title: 'Personal Journal',
+    subtitle: 'Reflect, Write, Grow',
+    description: 'Capture your thoughts, reflect on your day, and track your personal growth journey. A private space to document your wins, lessons, and moments that matter.',
+    placeholder: '📓',
+    placeholderText: 'Journal Page Screenshot',
+    reverse: true,
+  },
+];
+---
+
+<section class="features-section section" id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title">
+        Powerful <span class="text-gradient">Features</span>
+      </h2>
+      <p class="section-subtitle">
+        Everything you need to take control of your productivity, beautifully integrated.
+      </p>
+    </div>
+
+    <div class="features-list">
+      {features.map((feature, index) => (
+        <div class={`feature-item ${feature.reverse ? 'reverse' : ''} reveal`}>
+          <div class="feature-content">
+            <span class="feature-badge">Feature {index + 1}</span>
+            <h3 class="feature-title">{feature.title}</h3>
+            <p class="feature-subtitle">{feature.subtitle}</p>
+            <p class="feature-description">{feature.description}</p>
+            <a href="#download" class="feature-link">
+              Learn more
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="feature-image">
+            <div class="image-frame glass-panel">
+              <div class="frame-header">
+                <div class="frame-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="frame-body">
+                <div class="placeholder-box">
+                  <span class="placeholder-emoji">{feature.placeholder}</span>
+                  <p>{feature.placeholderText}</p>
+                  <span class="placeholder-sub">Replace with your image</span>
+                </div>
+              </div>
+            </div>
+            <!-- Decorative glow -->
+            <div class="image-glow"></div>
+          </div>
+
+          <!-- Connecting line (for visual continuity) -->
+          {index < features.length - 1 && (
+            <div class="connecting-line"></div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-section {
+    background: var(--bg-secondary);
+  }
+
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xl);
+  }
+
+  .feature-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+    position: relative;
+  }
+
+  .feature-item.reverse {
+    direction: rtl;
+  }
+
+  .feature-item.reverse > * {
+    direction: ltr;
+  }
+
+  /* Content */
+  .feature-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .feature-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-xs) var(--space-md);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: var(--radius-full);
+    width: fit-content;
+  }
+
+  .feature-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+  }
+
+  .feature-subtitle {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  .feature-description {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  .feature-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: var(--space-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .feature-link:hover {
+    gap: var(--space-md);
+    color: var(--secondary-color);
+  }
+
+  .feature-link svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .feature-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Image Frame */
+  .feature-image {
+    position: relative;
+  }
+
+  .image-frame {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .frame-header {
+    padding: var(--space-md) var(--space-lg);
+    background: var(--card-elevated);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .frame-dots {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .frame-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    opacity: 0.5;
+  }
+
+  .frame-dots span:nth-child(1) { background: #ff5f57; opacity: 1; }
+  .frame-dots span:nth-child(2) { background: #febc2e; opacity: 1; }
+  .frame-dots span:nth-child(3) { background: #28c840; opacity: 1; }
+
+  .frame-body {
+    padding: var(--space-3xl);
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--card-bg), var(--card-elevated));
+  }
+
+  .placeholder-box {
+    text-align: center;
+    color: var(--text-muted);
+  }
+
+  .placeholder-emoji {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+
+  .placeholder-box p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .placeholder-sub {
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  /* Glow Effect */
+  .image-glow {
+    position: absolute;
+    inset: 20px;
+    background: radial-gradient(circle at center, rgba(73, 136, 196, 0.2), transparent 70%);
+    z-index: 0;
+    filter: blur(40px);
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+  }
+
+  .feature-image:hover .image-glow {
+    opacity: 1;
+  }
+
+  /* Connecting Line */
+  .connecting-line {
+    position: absolute;
+    left: 50%;
+    bottom: -60px;
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--primary-color), transparent);
+    opacity: 0.3;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .feature-item {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .feature-item.reverse {
+      direction: ltr;
+    }
+
+    .feature-content {
+      order: 2;
+      text-align: center;
+      align-items: center;
+    }
+
+    .feature-image {
+      order: 1;
+    }
+
+    .frame-body {
+      min-height: 280px;
+    }
+
+    .connecting-line {
+      display: none;
+    }
+  }
+</style>

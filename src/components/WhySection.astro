@@ -1,0 +1,177 @@
+---
+const features = [
+  {
+    icon: '🧩',
+    title: 'Stop the App Switching',
+    description: 'Tasks in one app, habits in another, timer in a third... Shuuchuu brings them all together in perfect sync.',
+  },
+  {
+    icon: '🧠',
+    title: 'Deep Focus Built-In',
+    description: 'Launch the Mini Mode timer. It stays with you, floating on top of your work, keeping you accountable every second.',
+  },
+  {
+    icon: '📝',
+    title: 'Organize Your Growth',
+    description: 'A clean and focused space to visually track and organize your tasks, goals, and habits',
+  },
+];
+---
+
+<section class="why-section section" id="why">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title">
+        Why <span class="text-gradient">Shuuchuu</span>?
+      </h2>
+      <p class="section-subtitle">
+        One app to rule them all. Stop context-switching and start achieving.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      {features.map((feature, index) => (
+        <div class={`why-card glass-panel reveal stagger-${index + 1}`}>
+          <div class="why-icon-wrapper">
+            <span class="why-icon">{feature.icon}</span>
+            <div class="icon-glow"></div>
+          </div>
+          <h3 class="why-title">{feature.title}</h3>
+          <p class="why-description">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Decorative Elements -->
+  <div class="why-decoration">
+    <div class="decoration-line"></div>
+  </div>
+</section>
+
+<style>
+  .why-section {
+    position: relative;
+    background: linear-gradient(180deg, var(--bg-gradient), var(--bg-secondary));
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .why-card {
+    padding: var(--space-2xl);
+    text-align: center;
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(73, 136, 196, 0.05), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+  }
+
+  .why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      var(--glass-shadow),
+      0 0 40px rgba(73, 136, 196, 0.15);
+  }
+
+  .why-card:hover::before {
+    opacity: 1;
+  }
+
+  .why-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    margin-bottom: var(--space-lg);
+  }
+
+  .why-icon {
+    font-size: 3.5rem;
+    position: relative;
+    z-index: 1;
+    transition: transform var(--transition-smooth);
+  }
+
+  .why-card:hover .why-icon {
+    transform: scale(1.1);
+  }
+
+  .icon-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(73, 136, 196, 0.3), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    border-radius: 50%;
+  }
+
+  .why-card:hover .icon-glow {
+    opacity: 1;
+  }
+
+  .why-title {
+    font-size: 1.35rem;
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+  }
+
+  .why-description {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Decorative Elements */
+  .why-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    pointer-events: none;
+  }
+
+  .decoration-line {
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      var(--primary-color), 
+      var(--secondary-color), 
+      var(--primary-color), 
+      transparent
+    );
+    opacity: 0.3;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .why-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-card {
+      padding: var(--space-xl);
+    }
+
+    .why-icon {
+      font-size: 3rem;
+    }
+  }
+</style>

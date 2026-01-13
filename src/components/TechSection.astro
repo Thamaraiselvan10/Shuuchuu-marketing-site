@@ -1,0 +1,135 @@
+---
+const techFeatures = [
+  {
+    icon: '🔒',
+    title: 'Offline First',
+    description: 'Your data stays on your device. Complete privacy, zero cloud dependency.',
+  },
+  {
+    icon: '⚡',
+    title: 'Lightning Fast',
+    description: 'Built with React & Electron for native desktop performance.',
+  },
+  {
+    icon: '🎨',
+    title: 'Customizable',
+    description: 'Themes, layouts, and notification settings tailored to you.',
+  },
+];
+---
+
+<section class="tech-section section">
+  <div class="container">
+    <div class="tech-grid">
+      {techFeatures.map((feature, index) => (
+        <div class={`tech-card reveal stagger-${index + 1}`}>
+          <div class="tech-icon-wrapper">
+            <span class="tech-icon">{feature.icon}</span>
+          </div>
+          <div class="tech-content">
+            <h3 class="tech-title">{feature.title}</h3>
+            <p class="tech-description">{feature.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Decorative border -->
+  <div class="tech-border-top"></div>
+  <div class="tech-border-bottom"></div>
+</section>
+
+<style>
+  .tech-section {
+    position: relative;
+    background: var(--bg-gradient);
+    padding: var(--space-3xl) 0;
+    overflow: hidden;
+  }
+
+  .tech-border-top,
+  .tech-border-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      var(--primary-color), 
+      var(--secondary-color), 
+      var(--primary-color), 
+      transparent
+    );
+    opacity: 0.3;
+  }
+
+  .tech-border-top { top: 0; }
+  .tech-border-bottom { bottom: 0; }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .tech-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-smooth);
+  }
+
+  .tech-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(73, 136, 196, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .tech-icon-wrapper {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(73, 136, 196, 0.1), rgba(86, 156, 214, 0.1));
+    border-radius: var(--radius-md);
+  }
+
+  .tech-icon {
+    font-size: 1.75rem;
+  }
+
+  .tech-content {
+    flex: 1;
+  }
+
+  .tech-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tech-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .tech-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tech-card {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+</style>

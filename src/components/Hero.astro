@@ -1,0 +1,350 @@
+---
+---
+
+<section class="hero" id="hero">
+  <!-- Animated Background -->
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-lines"></div>
+  </div>
+
+  <div class="hero-container container">
+    <!-- Content -->
+    <div class="hero-content">
+      <h1 class="hero-title animate-fade-in-up">
+        Master Your Flows.
+        <span class="text-gradient">Conquer Your Goals.</span>
+      </h1>
+      
+      <p class="hero-subtitle animate-fade-in-up stagger-1">
+        The all-in-one workspace that combines tasks, habits, and deep focus 
+        into a seamless flow. Stop juggling apps and start achieving.
+      </p>
+
+      <div class="hero-cta animate-fade-in-up stagger-2">
+        <a href="#download" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8"/>
+            <path d="M12 17v4"/>
+          </svg>
+          Download for Windows
+        </a>
+        <a href="#features" class="btn btn-secondary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="10,8 16,12 10,16"/>
+          </svg>
+          Watch Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- Product Mockup -->
+    <div class="hero-mockup animate-fade-in-up stagger-3">
+      <div class="mockup-main glass-panel">
+        <div class="mockup-header">
+          <div class="mockup-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="mockup-title">Shuuchuu Dashboard</span>
+        </div>
+        <div class="mockup-body">
+          <div class="placeholder-content">
+            <div class="placeholder-icon">🎯</div>
+            <p>Dashboard Screenshot</p>
+            <span class="placeholder-hint">Replace with your product image</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Floating Mini Timer -->
+      <div class="mockup-mini-timer glass-panel animate-float">
+        <div class="mini-timer-display">
+          <span class="mini-timer-time">25:00</span>
+          <span class="mini-timer-label">Focus Mode</span>
+        </div>
+        <div class="mini-timer-controls">
+          <button class="mini-timer-btn">▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator animate-scroll-bounce">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  /* Animated Background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+  }
+
+  .orb-1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    top: -200px;
+    right: -100px;
+    animation: orbFloat 15s ease-in-out infinite;
+  }
+
+  .orb-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--secondary-color), #8b5cf6);
+    bottom: -100px;
+    left: -100px;
+    animation: orbFloat 12s ease-in-out infinite reverse;
+  }
+
+  .orb-3 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #06b6d4, var(--primary-color));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbFloat 10s ease-in-out infinite;
+    animation-delay: -5s;
+  }
+
+  .grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  [data-theme="light"] .grid-lines {
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  }
+
+  /* Container */
+  .hero-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-3xl);
+    padding: var(--space-3xl) var(--space-lg);
+  }
+
+  /* Content */
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+
+  /* Mockup */
+  .hero-mockup {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .mockup-main {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 
+      0 0 0 1px rgba(255,255,255,0.1),
+      0 20px 50px rgba(0,0,0,0.5),
+      0 0 100px rgba(73, 136, 196, 0.2);
+  }
+
+  .mockup-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--card-elevated);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .mockup-dots {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background: #ff5f57; }
+  .dot.yellow { background: #febc2e; }
+  .dot.green { background: #28c840; }
+
+  .mockup-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .mockup-body {
+    padding: var(--space-3xl);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--card-bg), var(--card-elevated));
+  }
+
+  .placeholder-content {
+    text-align: center;
+    color: var(--text-muted);
+  }
+
+  .placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .placeholder-content p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .placeholder-hint {
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+
+  /* Mini Timer Floating */
+  .mockup-mini-timer {
+    position: absolute;
+    right: -30px;
+    bottom: 60px;
+    padding: var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    box-shadow: 
+      0 0 0 1px rgba(255,255,255,0.1),
+      0 10px 30px rgba(0,0,0,0.4),
+      0 0 50px rgba(73, 136, 196, 0.15);
+  }
+
+  .mini-timer-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mini-timer-time {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .mini-timer-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .mini-timer-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: var(--space-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-mockup {
+      max-width: 100%;
+    }
+
+    .mockup-mini-timer {
+      right: 10px;
+      bottom: 30px;
+      padding: var(--space-md);
+    }
+
+    .mini-timer-time {
+      font-size: 1.25rem;
+    }
+
+    .mockup-body {
+      min-height: 280px;
+      padding: var(--space-xl);
+    }
+
+    .placeholder-icon {
+      font-size: 3rem;
+    }
+  }
+</style>
