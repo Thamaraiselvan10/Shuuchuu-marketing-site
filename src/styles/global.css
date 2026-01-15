@@ -266,6 +266,10 @@ button {
    ANIMATIONS
    ===================================================== */
 
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+
 /* Fade In Up */
 @keyframes fadeInUp {
   from {
@@ -279,7 +283,8 @@ button {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  will-change: opacity, transform;
 }
 
 /* Float Animation */
@@ -290,6 +295,7 @@ button {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Pulse Glow */
@@ -351,7 +357,8 @@ button {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.6s ease-out;
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.active {

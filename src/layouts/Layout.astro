@@ -4,9 +4,9 @@ export interface Props {
   description?: string;
 }
 
-const { 
+const {
   title = "Shuuchuu - Master Your Focus",
-  description = "The all-in-one workspace that combines tasks, habits, and deep focus into a seamless flow. Stop juggling apps and start achieving."
+  description = "The all-in-one workspace that combines tasks, habits, and deep focus into a seamless flow. Stop juggling apps and start achieving.",
 } = Astro.props;
 ---
 
@@ -17,69 +17,77 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    
+
     <title>{title}</title>
   </head>
   <body>
     <slot />
-    
+
     <script>
       // Theme toggle functionality
       const getTheme = () => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
         }
-        return 'dark';
+        return "dark";
       };
 
       const setTheme = (theme: string) => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
       };
 
       // Initialize theme
-      setTheme(getTheme() || 'dark');
+      setTheme(getTheme() || "dark");
 
       // Expose toggle function globally
-      window.toggleTheme = () => {
+      (window as any).toggleTheme = () => {
         const currentTheme = getTheme();
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
         setTheme(newTheme);
       };
 
       // Scroll reveal functionality
-      const revealElements = document.querySelectorAll('.reveal');
-      
-      const revealOnScroll = () => {
-        revealElements.forEach((el) => {
-          const elementTop = el.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          
-          if (elementTop < windowHeight - 100) {
-            el.classList.add('active');
-          }
-        });
-      };
+      const revealElements = document.querySelectorAll(".reveal");
 
-      window.addEventListener('scroll', revealOnScroll);
-      revealOnScroll(); // Initial check
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              // Optional: Stop observing once revealed
+              // revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          root: null,
+          threshold: 0.15, // Trigger when 15% visible
+          rootMargin: "0px 0px -50px 0px", // Offset slightly so it doesn't trigger *immediately* at the very bottom
+        },
+      );
+
+      revealElements.forEach((el) => revealObserver.observe(el));
     </script>
   </body>
 </html>
 
 <style is:global>
-  @import '../styles/global.css';
+  @import "../styles/global.css";
 </style>
