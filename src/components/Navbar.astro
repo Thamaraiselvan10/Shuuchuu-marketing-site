@@ -11,7 +11,7 @@ const navLinks = [
   <div class="navbar-container container">
     <!-- Logo -->
     <a href="/" class="navbar-logo">
-      <span class="logo-icon">集</span>
+      <img src="/app-icon.png" alt="Shuuchuu Logo" class="logo-icon-img" />
       <span class="logo-text">Shuuchuu</span>
     </a>
 
@@ -138,20 +138,11 @@ const navLinks = [
     text-decoration: none;
   }
 
-  .logo-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .logo-icon-img {
     width: 40px;
     height: 40px;
-    background: linear-gradient(
-      135deg,
-      var(--primary-color),
-      var(--secondary-color)
-    );
-    border-radius: var(--radius-md);
-    color: white;
-    font-size: 1.25rem;
+    border-radius: var(--radius-sm);
+    object-fit: contain;
   }
 
   .logo-text {

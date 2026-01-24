@@ -4,6 +4,7 @@ const features = [
     title: 'The Command Center',
     subtitle: 'Your Day at a Glance',
     description: 'Customize your dashboard with the widgets that matter to you—Tasks, Habits, Calendar, or your Daily Focus Stats. Everything you need, exactly where you need it.',
+    image: '/dashboard.png',
     placeholder: '🎛️',
     placeholderText: 'Dashboard Screenshot',
     reverse: false,
@@ -12,6 +13,7 @@ const features = [
     title: 'Goal Mapping',
     subtitle: 'Dream Big, Plan Small',
     description: 'Break down massive ambitions into manageable phases. Watch your progress bar fill up as you conquer milestones on your journey to success.',
+    image: '/goal.png',
     placeholder: '🗺️',
     placeholderText: 'Goals Map View',
     reverse: true,
@@ -19,7 +21,8 @@ const features = [
   {
     title: 'Unbreakable Habits',
     subtitle: 'Build Routines That Stick',
-    description: 'Track daily habits with satisfying check-ins and streak counters. Consistency is key—and Shuuchuu makes it feel rewarding every single day.',
+    description: 'Track daily habits with satisfying check-ins and streak counters. Consistency is key, and ShuuChuu makes it feel rewarding every single day.',
+    image: '/habit.png',
     placeholder: '🔥',
     placeholderText: 'Habits Page Screenshot',
     reverse: false,
@@ -28,6 +31,7 @@ const features = [
     title: 'Personal Journal',
     subtitle: 'Reflect, Write, Grow',
     description: 'Capture your thoughts, reflect on your day, and track your personal growth journey. A private space to document your wins, lessons, and moments that matter.',
+    image: '/personal-journel.png',
     placeholder: '📓',
     placeholderText: 'Journal Page Screenshot',
     reverse: true,
@@ -72,11 +76,15 @@ const features = [
                 </div>
               </div>
               <div class="frame-body">
-                <div class="placeholder-box">
-                  <span class="placeholder-emoji">{feature.placeholder}</span>
-                  <p>{feature.placeholderText}</p>
-                  <span class="placeholder-sub">Replace with your image</span>
-                </div>
+                {feature.image ? (
+                  <img src={feature.image} alt={feature.title} class="feature-img" />
+                ) : (
+                  <div class="placeholder-box">
+                    <span class="placeholder-emoji">{feature.placeholder}</span>
+                    <p>{feature.placeholderText}</p>
+                    <span class="placeholder-sub">Replace with your image</span>
+                  </div>
+                )}
               </div>
             </div>
             <!-- Decorative glow -->
@@ -216,17 +224,21 @@ const features = [
   .frame-dots span:nth-child(3) { background: #28c840; opacity: 1; }
 
   .frame-body {
-    padding: var(--space-3xl);
-    min-height: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0;
+    min-height: auto;
     background: linear-gradient(135deg, var(--card-bg), var(--card-elevated));
+  }
+
+  .feature-img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .placeholder-box {
     text-align: center;
     color: var(--text-muted);
+    padding: var(--space-3xl);
   }
 
   .placeholder-emoji {
@@ -294,7 +306,7 @@ const features = [
     }
 
     .frame-body {
-      min-height: 280px;
+      min-height: auto;
     }
 
     .connecting-line {

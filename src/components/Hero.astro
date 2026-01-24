@@ -69,12 +69,11 @@
           <span class="mockup-title">Shuuchuu Dashboard</span>
         </div>
         <div class="mockup-body">
-          <div class="placeholder-content">
-            <div class="placeholder-icon">🎯</div>
-            <p>Dashboard Screenshot</p>
-            <span class="placeholder-hint">Replace with your product image</span
-            >
-          </div>
+          <img
+            src="/dashboard.png"
+            alt="Shuuchuu Dashboard"
+            class="dashboard-img"
+          />
         </div>
       </div>
 
@@ -271,33 +270,16 @@
   }
 
   .mockup-body {
-    padding: var(--space-3xl);
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0;
+    min-height: auto;
     background: linear-gradient(135deg, var(--card-bg), var(--card-elevated));
+    overflow: hidden;
   }
 
-  .placeholder-content {
-    text-align: center;
-    color: var(--text-muted);
-  }
-
-  .placeholder-icon {
-    font-size: 4rem;
-    margin-bottom: var(--space-md);
-  }
-
-  .placeholder-content p {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: var(--space-sm);
-  }
-
-  .placeholder-hint {
-    font-size: 0.9rem;
-    opacity: 0.6;
+  .dashboard-img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* Mini Timer Floating */
@@ -376,12 +358,8 @@
     }
 
     .mockup-body {
-      min-height: 280px;
-      padding: var(--space-xl);
-    }
-
-    .placeholder-icon {
-      font-size: 3rem;
+      min-height: auto;
+      padding: 0;
     }
   }
 </style>
