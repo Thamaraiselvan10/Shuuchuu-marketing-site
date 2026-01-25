@@ -69,11 +69,18 @@
           <span class="mockup-title">Shuuchuu Dashboard</span>
         </div>
         <div class="mockup-body">
-          <img
-            src="/dashboard.png"
-            alt="Shuuchuu Dashboard"
-            class="dashboard-img"
-          />
+          <div class="image-container">
+            <img
+              src="/dashboard.png"
+              alt="Shuuchuu Dashboard"
+              class="dashboard-img theme-dark"
+            />
+            <img
+              src="/dashboard-light.png"
+              alt="Shuuchuu Dashboard Light"
+              class="dashboard-img theme-light"
+            />
+          </div>
         </div>
       </div>
 
@@ -276,9 +283,29 @@
     overflow: hidden;
   }
 
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
   .dashboard-img {
     width: 100%;
     height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .theme-light {
+    display: none;
+  }
+
+  /* Theme Switching Logic */
+  :global([data-theme="light"]) .theme-dark {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .theme-light {
     display: block;
   }
 

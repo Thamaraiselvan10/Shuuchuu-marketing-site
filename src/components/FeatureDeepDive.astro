@@ -77,7 +77,14 @@ const features = [
               </div>
               <div class="frame-body">
                 {feature.image ? (
-                  <img src={feature.image} alt={feature.title} class="feature-img" />
+                  <div class="image-container">
+                    <img src={feature.image} alt={feature.title} class="feature-img theme-dark" />
+                    <img 
+                      src={feature.image.replace('.png', '-light.png')} 
+                      alt={`${feature.title} Light`} 
+                      class="feature-img theme-light" 
+                    />
+                  </div>
                 ) : (
                   <div class="placeholder-box">
                     <span class="placeholder-emoji">{feature.placeholder}</span>
@@ -228,10 +235,28 @@ const features = [
     min-height: auto;
     background: linear-gradient(135deg, var(--card-bg), var(--card-elevated));
   }
+  
+  .image-container {
+    position: relative;
+    width: 100%;
+  }
 
   .feature-img {
     width: 100%;
     height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+  
+  .theme-light {
+    display: none;
+  }
+  
+  :global([data-theme="light"]) .theme-dark {
+    display: none;
+  }
+  
+  :global([data-theme="light"]) .theme-light {
     display: block;
   }
 
